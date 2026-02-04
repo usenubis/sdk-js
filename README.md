@@ -1,29 +1,29 @@
-# @nubis/sdk
+# nubis-sdk
 
 Official Nubis SDK for JavaScript and TypeScript.
 
 ## Installation
 
 ```bash
-npm install @nubis/sdk
+npm install nubis-sdk
 ```
 
 ## Usage
 
 ```typescript
-import { NubisClient } from '@nubis/sdk';
+import { NubisClient } from 'nubis-sdk';
 
 const nubis = new NubisClient({
   apiKey: process.env.NUBIS_API_KEY,
 });
 
-// List all droplets in a project
-const droplets = await nubis.droplets.list({
+// List all VMs in a project
+const vms = await nubis.vms.list({
   projectId: 'proj_01J5X...',
 });
 
-// Create a new droplet
-const droplet = await nubis.droplets.create({
+// Create a new VM
+const vm = await nubis.vms.create({
   projectId: 'proj_01J5X...',
   name: 'api-server',
   size: 's-1vcpu-1gb',
@@ -31,7 +31,7 @@ const droplet = await nubis.droplets.create({
   image: 'ubuntu-24.04-x64',
 });
 
-console.log(`Created Droplet: ${droplet.id}`);
+console.log(`Created VM: ${vm.id}`);
 ```
 
 ## API Reference
@@ -41,14 +41,14 @@ console.log(`Created Droplet: ${droplet.id}`);
 ```typescript
 interface NubisClientConfig {
   apiKey: string;           // Required: Your Nubis API key
-  baseURL?: string;          // Optional: API base URL (default: https://api.nubis.cloud)
+  baseURL?: string;          // Optional: API base URL (default: https://api.usenubis.com)
   timeout?: number;          // Optional: Request timeout in ms (default: 30000)
 }
 ```
 
 ### Resources
 
-- `droplets` - Manage virtual machines (droplets)
+- `vms` - Manage virtual machines
 - `projects` - Manage projects
 - `orgs` - Manage organizations
 - `regions` - List available regions
