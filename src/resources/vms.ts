@@ -2,7 +2,7 @@ import { NubisClient } from '../client';
 import type { CreateVmRequest, Vm } from '../types';
 
 export class VmsResource {
-  constructor(private client: NubisClient) {}
+  constructor(private client: NubisClient) { }
 
   /**
    * List all VMs in a project
@@ -59,6 +59,13 @@ export class VmsResource {
    */
   async resize(params: { projectId: string; vmId: string; size: string }): Promise<Vm> {
     return this.client.post(`/api/v1/projects/${params.projectId}/vms/${params.vmId}/resize`, { size: params.size });
+  }
+
+  /**
+   * Rename a VM
+   */
+  async rename(params: { projectId: string; vmId: string; name: string }): Promise<Vm> {
+    return this.client.post(`/api/v1/projects/${params.projectId}/vms/${params.vmId}/rename`, { name: params.name });
   }
 
   /**

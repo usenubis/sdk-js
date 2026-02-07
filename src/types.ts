@@ -86,3 +86,28 @@ export interface ApiError {
     code?: string;
   };
 }
+
+export interface UsageBreakdown {
+  compute: number;
+  storage: number;
+  networking: number;
+  load_balancers: number;
+}
+
+export interface CurrentUsageResponse {
+  period_start: string;
+  period_end: string;
+  accrued_cents: number;
+  projected_total_cents: number;
+  currency: string;
+  breakdown: UsageBreakdown;
+}
+
+export interface UsageSummaryResponse {
+  current_month_spend_cents: number;
+  estimated_total_bill_cents: number;
+  currency: string;
+  last_updated_at: string;
+  period_start: string;
+  period_end: string;
+}
