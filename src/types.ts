@@ -30,8 +30,22 @@ export interface Vm {
   status: string;
   size: string;
   region: string;
+  project_id: string;
+  org_id: string;
+  provider: string;
   image: string;
+  public_ip?: string;
+  private_ip?: string;
   created_at: string;
+  started_at?: string;
+  last_error?: string;
+  provider_id?: string;
+  do_droplet_id?: number;
+  do_vpc_uuid?: string;
+  do_tags?: string[];
+  raw_base_price_hourly?: number;
+  nubis_final_price_hourly?: number;
+  hourly_cost?: number;
   [key: string]: any;
 }
 
