@@ -6,6 +6,9 @@ export { OrgsResource } from './resources/orgs';
 export { RegionsResource } from './resources/regions';
 export { SizesResource } from './resources/sizes';
 export { ImagesResource } from './resources/images';
+export { KubernetesResource } from './resources/kubernetes';
+export { DatabasesResource } from './resources/databases';
+export { AppEngineResource } from './resources/appEngine';
 
 import { NubisClient as BaseNubisClient } from './client';
 import { VmsResource } from './resources/vms';
@@ -14,6 +17,9 @@ import { OrgsResource } from './resources/orgs';
 import { RegionsResource } from './resources/regions';
 import { SizesResource } from './resources/sizes';
 import { ImagesResource } from './resources/images';
+import { KubernetesResource } from './resources/kubernetes';
+import { DatabasesResource } from './resources/databases';
+import { AppEngineResource } from './resources/appEngine';
 import type { NubisClientConfig } from './types';
 
 /**
@@ -49,6 +55,9 @@ export class NubisClient extends BaseNubisClient {
   public readonly regions: RegionsResource;
   public readonly sizes: SizesResource;
   public readonly images: ImagesResource;
+  public readonly kubernetes: KubernetesResource;
+  public readonly databases: DatabasesResource;
+  public readonly appEngine: AppEngineResource;
 
   constructor(config: NubisClientConfig) {
     super(config);
@@ -58,6 +67,9 @@ export class NubisClient extends BaseNubisClient {
     this.regions = new RegionsResource(this);
     this.sizes = new SizesResource(this);
     this.images = new ImagesResource(this);
+    this.kubernetes = new KubernetesResource(this);
+    this.databases = new DatabasesResource(this);
+    this.appEngine = new AppEngineResource(this);
   }
 }
 

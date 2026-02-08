@@ -125,3 +125,95 @@ export interface UsageSummaryResponse {
   period_start: string;
   period_end: string;
 }
+
+export interface KubernetesNodePool {
+  id: string;
+  name: string;
+  size: string;
+  count: number;
+  auto_scale: boolean;
+  min_nodes?: number;
+  max_nodes?: number;
+}
+
+export interface KubernetesCluster {
+  id: string;
+  project_id: string;
+  org_id: string;
+  name: string;
+  region: string;
+  version: string;
+  status: string;
+  ha_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+  node_pools?: KubernetesNodePool[];
+}
+
+export interface CreateK8sRequest {
+  name: string;
+  region: string;
+  version: string;
+  ha: boolean;
+  node_pools: {
+    name: string;
+    size: string;
+    count: number;
+    auto_scale: boolean;
+    min_nodes?: number;
+    max_nodes?: number;
+  }[];
+}
+
+export interface DatabaseCluster {
+  id: string;
+  project_id: string;
+  org_id: string;
+  name: string;
+  engine: string;
+  version: string;
+  status: string;
+  size: string;
+  num_nodes: number;
+  region: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface CreateDbRequest {
+  name: string;
+  engine: string;
+  version: string;
+  size: string;
+  num_nodes: number;
+  region: string;
+}
+
+export interface AppEngineProject {
+  id: string;
+  project_id: string;
+  repo_url: string;
+  branch: string;
+  framework?: string;
+  created_at: string;
+}
+
+export interface AppEngineDeployment {
+  id: string;
+  commit_sha?: string;
+  commit_message?: string;
+  branch: string;
+  status: string;
+  deployment_url?: string;
+  created_at: string;
+  finished_at?: string;
+}
+
+export interface AppEngineDomain {
+  id: string;
+  domain_name: string;
+  is_primary: boolean;
+  ssl_enabled: boolean;
+  status: string;
+  created_at: string;
+}
